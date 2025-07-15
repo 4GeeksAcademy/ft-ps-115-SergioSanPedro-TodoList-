@@ -6,12 +6,6 @@ export const TodoList = () => {
     const [usuario, setUserValue] = useState('');
     const [listaTarea, setLista] = useState([]);
 
-
-    const handleInput = (e) => {
-        setUserValue(e.target.value);
-
-    };
-
     const handleKeyUp = (e) => {
         if (e.key === 'Enter') {
             setLista([...listaTarea, usuario]);
@@ -29,25 +23,34 @@ export const TodoList = () => {
     return (
         <>
 
-            <h1 className="text-center mt-4">Lista de tareas</h1>
+            <h1 className="text-center mt-4 titulo">LISTA DE TAREAS</h1>
 
-            <div className="container my-4 border-2 d-flex justify-content-center">
+            <div className="container my-4 border-2 d-flex justify-content-center ">
 
-                <div className="row p-3 mx-5 w-50">
+                <div className="row p-3 mx-5 w-50 bg-dark rounded-2">
                     <input
+                        className="input rounded-2"
                         type="text"
                         placeholder="Introduce la tarea"
-                        onChange={handleInput}
+                        onChange={(e) => setUserValue(e.target.value)}
                         onKeyUp={handleKeyUp}
                         value={usuario}
 
                     />
+                    <span className="text-white text-center my-2">
+                        Te {listaTarea.length === 1 ? 'queda' : 'quedan'} {listaTarea.length} {listaTarea.length === 1 ? 'tarea' : 'tareas'} aún por completar. {listaTarea.length > 1 ? 'Espavila' : ''}
+
+                    </span>
+
                     {
                         listaTarea.map((tarea, index) => (
-                            <div className="d-flex justify-content-between align-items-center mt-2" id={index}>
-                                <span>{tarea}</span>
-                                <button onClick={() => deleteTarea(index)} className="delete-btn">X</button>
-                            </div>
+                            <>
+                                <div className="d-flex justify-content-between bg-white align-items-center mt-1 border border-2 tarea rounded-2 " key={index}>
+                                    <span>{tarea}</span>
+                                    <button onClick={() => deleteTarea(index)} className="btn">X</button>
+                                </div>
+
+                            </>
                         ))
                     }
                 </div>
