@@ -16,7 +16,7 @@ export const TodoList = () => {
 
     const deleteTarea = (id) => {
 
-        setLista(listaTarea.filter((tarea, index) => index !== id));
+        setLista(listaTarea.filter((_, index) => index !== id));
     };
 
 
@@ -44,13 +44,11 @@ export const TodoList = () => {
 
                     {
                         listaTarea.map((tarea, index) => (
-                            <>
-                                <div className="d-flex justify-content-between bg-white align-items-center mt-1 border border-2 tarea rounded-2 " key={index}>
+                            
+                                <div key={index} className="d-flex justify-content-between bg-white align-items-center mt-1 border border-2 tarea rounded-2 ">
                                     <span>{tarea}</span>
                                     <button onClick={() => deleteTarea(index)} className="btn">X</button>
                                 </div>
-
-                            </>
                         ))
                     }
                 </div>
