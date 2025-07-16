@@ -9,7 +9,7 @@ export const TodoList = () => {
     const handleKeyUp = (e) => {
         if (e.key === 'Enter') {
             setLista([...listaTarea, usuario]);
-            setUserValue('')
+            setUserValue('');
 
         }
     };
